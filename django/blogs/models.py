@@ -1,5 +1,5 @@
+from django.conf import settings
 from django.db import models
-from django.contrib.auth.models import User
 from django.urls import reverse
     
 
@@ -28,7 +28,7 @@ class Post(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='media',default='default.png', blank=True)
     status = models.CharField(max_length=10, choices=options, default='published')
-    author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blog_posts')
 
     def __str__(self):
         return self.title
