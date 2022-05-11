@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'blogs',
+    'crispy_forms',
+    "crispy_tailwind",
+    'tailwind',
 ]
 
 MIDDLEWARE = [
@@ -133,9 +136,22 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = "/blogs"
 LOGIN_URL = "/login"
 LOGOUT_REDIRECT_URL = "/login"
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = "media_root"
+STATIC_ROOT = "static_root"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# AUTH_USER_MODEL = 'leads.User'
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# LOGIN_REDIRECT_URL = "/leads"
+# LOGIN_URL = "/login"
+# LOGOUT_REDIRECT_URL = "/"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = 'tailwind'
