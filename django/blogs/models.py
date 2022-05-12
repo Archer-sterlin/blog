@@ -30,6 +30,9 @@ class Post(models.Model):
     status = models.CharField(max_length=10, choices=options, default='published')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blog_posts')
 
+    objects = models.Manager()  # default manager
+    postobjects = PostObjects()  # custom manager
+    
     def __str__(self):
         return self.title
 
